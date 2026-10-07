@@ -56,3 +56,54 @@ SELECT
 *
 FROM Sales.Orders
 WHERE MONTH(OrderDate) = 2
+
+
+-- show creationtime using the following format:
+-- Day Wed Jan Q1 2025 12:34:56 PM
+SELECT
+OrderID,
+CreationTime,
+'Day ' + FORMAT(CreationTime, 'ddd MMM') + ' Q' + DATENAME(QUARTER, CreationTime) + ' '
++ FORMAT(CreationTime, 'yyyy hh:mm:ss tt')    custom_format
+FROM Sales.Orders
+
+-- cast
+-- format vs convert vs cast
+
+-- DATEADD() adds or subtracts a specific time or interval to/from a date
+SELECT 
+OrderID,
+OrderDate,
+DATEADD(day, -10, OrderDate) AS ten_days_later,
+DATEADD(month, 3, OrderDate) AS three_months_later,
+DATEADD(year, 2, OrderDate) AS two_years_later
+FROM Sales.Orders
+
+-- DATEDIFF() finds the differences between two dates
+-- calculate the age of employees
+SELECT 
+EmployeeID,
+BirthDate,
+GETDATE() AS today,
+DATEDIFF(year, BirthDate, GETDATE()) AS age
+FROM Sales.Employees
+
+-- find the average shipping duration in days for each month
+SELECT
+
+DATENAME(month,OrderDate) AS order_month,
+AVG(DATEDIFF(DAY, OrderDate, ShipDate)) AS avg_shipping_time 
+FROM Sales.orders
+GROUP BY DATENAME(month,OrderDate)
+
+-- time gap analysis
+-- find the number of days between each order and previous order
+SELECT 
+OrderID,
+OrderDate AS current_order_date,
+LAG(OrderDate) OVER (ORDER BY OrderDate) previous_order_date,
+DATEDIFF(day, LAG(OrderDate) OVER (ORDER BY OrderDate), OrderDate) AS no_of_days
+FROM Sales.Orders
+
+-- ISDATE() checks if a value is a date
+-- returns 0 and 1
