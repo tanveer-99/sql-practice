@@ -8,7 +8,7 @@
 -- in a heap, rows are stored in the data pages according to the page size and then moves to another page to store the rest of the data
 
 
--- clustered index
+-- clustered indexs
 
 -- heap stack: data are inserted here randomly
 SELECT
@@ -74,7 +74,7 @@ targeting a subset of data to be accessible faster, reduces size of index
 
 unique index:
 enforces uniqueness, impproves query speed
-
+ 
 
 
 */
