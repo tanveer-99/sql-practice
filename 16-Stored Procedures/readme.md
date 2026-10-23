@@ -3,7 +3,7 @@
 
 > A stored procedure is a saved, named block of SQL that you run with `EXEC`. It can take parameters, run many statements, make decisions, handle errors and return results.
 
----
+--- 
 
 ## Table of Contents
 
