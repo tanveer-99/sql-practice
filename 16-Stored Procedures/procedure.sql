@@ -103,6 +103,6 @@ EXEC GetCustomerSummary -- returns USA(default) report
 
 DROP PROCEDURE GetCustomerSummaryGermany
 
-
+SELECT 
 
 
