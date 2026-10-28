@@ -4,7 +4,7 @@
 -- SQL STATEMENTS GO HERE
 -- END
 
--- Step1: Write a query
+-- Step1: Write a query 
 -- For US Customers, find the total number of customers and the average score
 SELECT 
     COUNT(*) AS total_customer,
